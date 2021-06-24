@@ -1,5 +1,6 @@
 html, body{
   background-color: #f6f6f6;
+  height: 100vh;
 }
 
 body {
@@ -14,4 +15,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root{
+  height: 100vh;
 }
