@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledList = styled.ul`
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+`;
 
 const IngredientList = (props) => {
   const { ingredients } = props;
@@ -16,9 +24,12 @@ const IngredientList = (props) => {
   ));
 
   return (
-    <ul>
-      {ingredientList}
-    </ul>
+    <div>
+      <Typography variant="h6">Ingredients</Typography>
+      <StyledList>
+        {ingredientList}
+      </StyledList>
+    </div>
   );
 };
 
