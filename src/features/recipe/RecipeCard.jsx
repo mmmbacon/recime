@@ -8,11 +8,18 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import IngredientList from './IngredientList';
+import InstructionSteps from './InstructionSteps';
 
 const StyledPaper = styled(Paper)`
   padding: 10px;
   margin: 10px;
 `;
+
+const dummyData = [
+  'Remove Egg from Carton',
+  'Crack Egg on counter',
+  'Pour Egg into Bowl',
+  'Whisk Egg with Beater Until frothy'];
 
 const RecipeCard = (props) => {
   const { data } = props;
@@ -20,7 +27,12 @@ const RecipeCard = (props) => {
   return (
     <StyledPaper>
       <Grid container>
-        <Grid item xs="12">
+        <Grid item>
+          <Box p={1}>
+            <img src="https://spoonacular.com/recipeImages/579247-90x90.jpg" alt="foodpic" />
+          </Box>
+        </Grid>
+        <Grid item>
           <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
             <Box mb={1}>
               <Typography variant="h5">{data.title}</Typography>
@@ -32,35 +44,39 @@ const RecipeCard = (props) => {
               </Box>
             </Box>
           </Box>
-        </Grid>
-        <Grid item>
-          <Box display="flex" flexDirection="column">
-            <Typography variant="body1">{data.description}</Typography>
-            <IngredientList ingredients={data.ingredient_list} />
-          </Box>
-        </Grid>
-        <Grid item xs="12">
-          <Box display="flex" flexDirection="row" alignItems="center" m={1} justifyContent="space-between">
-            <Box display="flex" alignItems="center">
-              <IconButton size="small" color="primary">
-                <ArrowUpwardIcon />
-              </IconButton>
-              <IconButton size="small" color="secondary">
-                <ArrowDownwardIcon />
-              </IconButton>
-              <Box ml={1}>
-                <Typography variant="body1">Vote!</Typography>
+          <Box>
+            <Grid item>
+              <Box display="flex" flexDirection="column">
+                <Typography variant="body1">{data.description}</Typography>
+                <IngredientList ingredients={data.ingredient_list} />
+                <InstructionSteps steps={dummyData} />
               </Box>
-            </Box>
-            <Box>
-              <Typography variant="body2">
-                comments (
-                {data.comments.length}
-                )
-              </Typography>
-            </Box>
+            </Grid>
+            <Grid item xs="12">
+              <Box display="flex" flexDirection="row" alignItems="center" m={1} justifyContent="space-between">
+                <Box display="flex" alignItems="center">
+                  <IconButton size="small" color="primary">
+                    <ArrowUpwardIcon />
+                  </IconButton>
+                  <IconButton size="small" color="secondary">
+                    <ArrowDownwardIcon />
+                  </IconButton>
+                  <Box ml={1}>
+                    <Typography variant="body1">Vote!</Typography>
+                  </Box>
+                </Box>
+                <Box>
+                  <Typography variant="body2">
+                    comments (
+                    {data.comments.length}
+                    )
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
           </Box>
         </Grid>
+
       </Grid>
     </StyledPaper>
   );
