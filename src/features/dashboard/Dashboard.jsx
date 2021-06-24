@@ -29,7 +29,7 @@ const Dashboard = () => (
   <Box>
     <AppBar position="static" color="secondary">
       <Toolbar>
-        <Typography variant="h4" style={{ fontFamily: 'Kavoon' }}>Recime </Typography>
+        <Typography variant="h4" style={{ fontFamily: 'Kavoon' }}>Recime!</Typography>
       </Toolbar>
     </AppBar>
     <Container>
