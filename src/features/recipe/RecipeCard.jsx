@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
@@ -16,6 +16,16 @@ const StyledPaper = styled(Paper)`
 const RecipeCard = (props) => {
   const { data } = props;
 
+  const ingredientList = data.ingredient_list.map((item) => (
+    <li>
+      <Typography variant="body1">
+        {item.name}
+        {item.quantity}
+        {item.unit}
+      </Typography>
+    </li>
+  ));
+
   return (
     <StyledPaper>
       <Grid container>
@@ -26,11 +36,20 @@ const RecipeCard = (props) => {
             </Box>
             <Box display="flex" flexDirection="row" alignItems="center">
               <FavoriteIcon />
-              <Typography variant="caption" align="center">{data.favourites}</Typography>
+              <Box pl={0.5}>
+                <Typography variant="caption" align="center">{data.favourites}</Typography>
+              </Box>
             </Box>
           </Box>
         </Grid>
-        <Grid item><Typography variant="body1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus doloremque minima fugit natus esse temporibus magnam incidunt, ad facilis eos, atque suscipit repudiandae consectetur iste illo sequi ratione vel labore numquam repellendus voluptatibus sed. Facere, consequatur. Molestias magni vero iste error dolore. Modi facilis beatae officiis maiores non, eaque rem.</Typography></Grid>
+        <Grid item>
+          <Box display="flex" flexDirection="column">
+            <Typography variant="body1">{data.description}</Typography>
+            <ul>
+              {ingredientList}
+            </ul>
+          </Box>
+        </Grid>
         <Grid item xs="12">
           <Box display="flex" flexDirection="row" alignItems="center" m={1} justifyContent="space-between">
             <Box display="flex" alignItems="center">
@@ -62,14 +81,21 @@ RecipeCard.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-
+    avg_rating: PropTypes.number,
+    favourites: PropTypes.number,
+    comments: PropTypes.instanceOf(Array),
+    ingredient_list: PropTypes.instanceOf(Array),
   }),
 };
 
 RecipeCard.defaultProps = {
   data: {
     title: 'Recipe',
-    description: '',
+    description: 'This is a fantastic recipe',
+    avg_rating: 5,
+    favourites: 10,
+    comments: [],
+    ingredient_list: [],
   },
 };
 
