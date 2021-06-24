@@ -7,6 +7,7 @@ import {
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import IngredientList from './IngredientList';
 
 const StyledPaper = styled(Paper)`
   padding: 10px;
@@ -15,16 +16,6 @@ const StyledPaper = styled(Paper)`
 
 const RecipeCard = (props) => {
   const { data } = props;
-
-  const ingredientList = data.ingredient_list.map((item) => (
-    <li>
-      <Typography variant="body1">
-        {item.name}
-        {item.quantity}
-        {item.unit}
-      </Typography>
-    </li>
-  ));
 
   return (
     <StyledPaper>
@@ -45,9 +36,7 @@ const RecipeCard = (props) => {
         <Grid item>
           <Box display="flex" flexDirection="column">
             <Typography variant="body1">{data.description}</Typography>
-            <ul>
-              {ingredientList}
-            </ul>
+            <IngredientList ingredients={data.ingredient_list} />
           </Box>
         </Grid>
         <Grid item xs="12">
