@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledList = styled.ul`
@@ -25,7 +25,7 @@ const IngredientList = (props) => {
 
   return (
     <div>
-      <Typography variant="h6">Ingredients</Typography>
+      <Box pl={1}><Typography variant="h6">Ingredient List:</Typography></Box>
       <StyledList>
         {ingredientList}
       </StyledList>

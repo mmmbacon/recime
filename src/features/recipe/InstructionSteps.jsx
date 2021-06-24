@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledList = styled.ol`
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+`;
 
 const InstructionSteps = (props) => {
   const { steps } = props;
@@ -14,9 +22,12 @@ const InstructionSteps = (props) => {
   ));
 
   return (
-    <ol>
-      {stepList}
-    </ol>
+    <div>
+      <Box pl={1}><Typography variant="h6">Steps:</Typography></Box>
+      <StyledList>
+        {stepList}
+      </StyledList>
+    </div>
   );
 };
 

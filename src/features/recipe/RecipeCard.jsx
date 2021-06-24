@@ -44,8 +44,8 @@ const RecipeCard = (props) => {
             <Box p={1} display="flex" flexDirection="column" alignItems="center" alignContent="center" justifyContent="center">
               <img src="https://spoonacular.com/recipeImages/579247-90x90.jpg" alt="foodpic" />
             </Box>
-            <Box justifyContent="space-between" alignItems="center">
-              <Box mb={1}>
+            <Box justifyContent="space-between" alignItems="center" my={1.5}>
+              <Box mb={0}>
                 <Typography variant="h5">{data.title}</Typography>
               </Box>
               <Typography variant="body1">{data.description}</Typography>
